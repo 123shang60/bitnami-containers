@@ -4,13 +4,13 @@ ARG JAVA_EXTRA_SECURITY_DIR="/bitnami/java/extra-security"
 ARG TARGETARCH
 
 LABEL org.opencontainers.image.base.name="docker.io/bitnami/minideb:bullseye" \
-      org.opencontainers.image.created="2023-02-20T15:27:50Z" \
+      org.opencontainers.image.created="2023-02-21T18:50:07Z" \
       org.opencontainers.image.description="Application packaged by VMware, Inc" \
       org.opencontainers.image.licenses="Apache-2.0" \
-      org.opencontainers.image.ref.name="20.0.3-debian-11-r15" \
+      org.opencontainers.image.ref.name="20.0.5-debian-11-r0" \
       org.opencontainers.image.title="keycloak" \
       org.opencontainers.image.vendor="VMware, Inc." \
-      org.opencontainers.image.version="20.0.3"
+      org.opencontainers.image.version="20.0.5"
 
 ENV HOME="/" \
     OS_ARCH="${TARGETARCH:-amd64}" \
@@ -24,8 +24,8 @@ RUN install_packages ca-certificates curl krb5-user libaio1 procps zlib1g
 RUN mkdir -p /tmp/bitnami/pkg/cache/ && cd /tmp/bitnami/pkg/cache/ && \
     COMPONENTS=( \
       "wait-for-port-1.0.6-1-linux-${OS_ARCH}-debian-11" \
-      "java-11.0.18-10-1-linux-${OS_ARCH}-debian-11" \
-      "keycloak-20.0.3-6-linux-${OS_ARCH}-debian-11" \
+      "java-11.0.18-10-2-linux-${OS_ARCH}-debian-11" \
+      "keycloak-20.0.5-0-linux-${OS_ARCH}-debian-11" \
       "gosu-1.16.0-2-linux-${OS_ARCH}-debian-11" \
     ) && \
     for COMPONENT in "${COMPONENTS[@]}"; do \
@@ -44,7 +44,7 @@ RUN chmod g+rwX /opt/bitnami
 COPY rootfs /
 RUN /opt/bitnami/scripts/java/postunpack.sh
 RUN /opt/bitnami/scripts/keycloak/postunpack.sh
-ENV APP_VERSION="20.0.3" \
+ENV APP_VERSION="20.0.5" \
     BITNAMI_APP_NAME="keycloak" \
     JAVA_HOME="/opt/bitnami/java" \
     PATH="/opt/bitnami/common/bin:/opt/bitnami/java/bin:/opt/bitnami/keycloak/bin:$PATH"
