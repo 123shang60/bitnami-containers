@@ -14,13 +14,19 @@ set -o pipefail
 # Load Kafka environment variables
 . /opt/bitnami/scripts/kafka-env.sh
 
-if [[ "${KAFKA_CFG_LISTENERS:-}" =~ SASL ]] || [[ "${KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP:-}" =~ SASL ]] || [[ "${KAFKA_ZOOKEEPER_PROTOCOL:-}" =~ SASL ]]; then
-    export KAFKA_OPTS="-Djava.security.auth.login.config=${KAFKA_CONF_DIR}/kafka_jaas.conf"
-fi
+if [[ "${SKIP_KAFKA_OPTS:-}" =~ yes ]] ; then 
+    info "** skip config kafka_opts **"
+else
 
-if [[ "${KAFKA_ZOOKEEPER_PROTOCOL:-}" =~ SSL ]]; then
-    ZOOKEEPER_SSL_CONFIG=$(zookeeper_get_tls_config)
-    export KAFKA_OPTS="$KAFKA_OPTS $ZOOKEEPER_SSL_CONFIG"
+    if [[ "${KAFKA_CFG_LISTENERS:-}" =~ SASL ]] || [[ "${KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP:-}" =~ SASL ]] || [[ "${KAFKA_ZOOKEEPER_PROTOCOL:-}" =~ SASL ]]; then
+        export KAFKA_OPTS="-Djava.security.auth.login.config=${KAFKA_CONF_DIR}/kafka_jaas.conf"
+    fi
+
+    if [[ "${KAFKA_ZOOKEEPER_PROTOCOL:-}" =~ SSL ]]; then
+        ZOOKEEPER_SSL_CONFIG=$(zookeeper_get_tls_config)
+        export KAFKA_OPTS="$KAFKA_OPTS $ZOOKEEPER_SSL_CONFIG"
+    fi
+
 fi
 
 flags=("$KAFKA_CONF_FILE")
