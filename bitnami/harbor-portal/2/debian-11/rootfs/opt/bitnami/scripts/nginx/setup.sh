@@ -24,6 +24,9 @@ trap "nginx_stop" EXIT
 # Ensure NGINX daemon user exists when running as 'root'
 am_i_root && ensure_user_exists "$NGINX_DAEMON_USER" --group "$NGINX_DAEMON_GROUP"
 
+# Configure HTTPS sample block using generated SSL certs
+nginx_generate_sample_certs
+
 # Run init scripts
 nginx_custom_init_scripts
 
@@ -31,8 +34,8 @@ nginx_custom_init_scripts
 ! am_i_root || chmod o+w "$(readlink /dev/stdout)" "$(readlink /dev/stderr)"
 
 # Configure HTTPS port number
-if [[ -n "${NGINX_HTTPS_PORT_NUMBER:-}" ]] && [[ ! -f "${NGINX_SERVER_BLOCKS_DIR}/default-https-server-block.conf" ]] && is_file_writable "${NGINX_SERVER_BLOCKS_DIR}/default-https-server-block.conf"; then
-    cp "${BITNAMI_ROOT_DIR}/scripts/nginx/server_blocks/default-https-server-block.conf" "${NGINX_SERVER_BLOCKS_DIR}/default-https-server-block.conf"
+if [[ -f "${NGINX_CONF_DIR}/bitnami/certs/server.crt" ]] && [[ -n "${NGINX_HTTPS_PORT_NUMBER:-}" ]] && [[ ! -f "${NGINX_SERVER_BLOCKS_DIR}/default-https-server-block.conf" ]] && is_file_writable "${NGINX_SERVER_BLOCKS_DIR}/default-https-server-block.conf"; then
+    cp "${BITNAMI_ROOT_DIR}/scripts/nginx/bitnami-templates/default-https-server-block.conf" "${NGINX_SERVER_BLOCKS_DIR}/default-https-server-block.conf"
 fi
 
 # Initialize NGINX

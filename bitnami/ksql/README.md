@@ -4,9 +4,7 @@
 
 > Confluent KSQL DB is an event streaming database that helps you build stream processing apps
 
-[Overview of ksql](https://change.me)
-
-
+[Overview of ksql](https://www.confluent.io/)
 
 ## TL;DR
 
@@ -22,6 +20,8 @@ docker run --name ksql bitnami/ksql:latest
 * All our images are based on [minideb](https://github.com/bitnami/minideb) a minimalist Debian based container image which gives you a small base container image and the familiarity of a leading Linux distribution.
 * All Bitnami images available in Docker Hub are signed with [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/content_trust/). You can use `DOCKER_CONTENT_TRUST=1` to verify the integrity of the images.
 * Bitnami container images are released on a regular basis with the latest distribution packages available.
+
+Looking to use ksql in production? Try [VMware Application Catalog](https://bitnami.com/enterprise), the enterprise edition of Bitnami Application Catalog.
 
 ## Supported tags and respective `Dockerfile` links
 
@@ -63,7 +63,7 @@ If you encountered a problem running this container, you can file an [issue](htt
 
 ## License
 
-Copyright &copy; 2023 Bitnami
+Copyright &copy; 2023 VMware, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

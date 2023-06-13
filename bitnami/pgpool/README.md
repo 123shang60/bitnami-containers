@@ -5,7 +5,6 @@
 > Pgpool-II is the PostgreSQL proxy. It stands between PostgreSQL servers and their clients providing connection pooling, load balancing, automated failover, and replication.
 
 [Overview of Pgpool-II](http://pgpool.net/)
-
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 ## TL;DR
@@ -27,6 +26,8 @@ You can find the default credentials and available configuration options in the 
 * All our images are based on [minideb](https://github.com/bitnami/minideb) a minimalist Debian based container image which gives you a small base container image and the familiarity of a leading Linux distribution.
 * All Bitnami images available in Docker Hub are signed with [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/content_trust/). You can use `DOCKER_CONTENT_TRUST=1` to verify the integrity of the images.
 * Bitnami container images are released on a regular basis with the latest distribution packages available.
+
+Looking to use Pgpool-II in production? Try [VMware Application Catalog](https://bitnami.com/enterprise), the enterprise edition of Bitnami Application Catalog.
 
 ## How to deploy Pgpool-II in Kubernetes?
 
@@ -271,6 +272,8 @@ Pgpool configuration:
 * `PGPOOL_HEALTH_CHECK_TIMEOUT`: Specifies the timeout in seconds to give up connecting to the backend PostgreSQL if the TCP connect does not succeed within this time. Defaults to `10`.
 * `PGPOOL_HEALTH_CHECK_MAX_RETRIES`: Specifies the maximum number of retries to do before giving up and initiating failover when health check fails. Defaults to `5`.
 * `PGPOOL_HEALTH_CHECK_RETRY_DELAY`: Specifies the amount of time in seconds to sleep between failed health check retries. Defaults to `5`.
+* `PGPOOL_CONNECT_TIMEOUT`: Specifies the amount of time in milliseconds before giving up connecting to backend using `connect()` system call. Default is `10000`.
+* `PGPOOL_HEALTH_CHECK_PSQL_TIMEOUT`: Specifies the maximum amount of time in seconds function `pgpool_healthcheck()` waits for result of `show pool_nodes` command. It is set to `PGCONNECT_TIMEOUT` of respective `psql` execution. Default is `15`.
 * `PGPOOL_USER_CONF_FILE`: Configuration file to be added to the generated config file. This allow to override configuration set by the initializacion process. No defaults.
 * `PGPOOL_USER_HBA_FILE`: Configuration file to be added to the generated hba file. This allow to override configuration set by the initialization process. No defaults.
 * `PGPOOL_POSTGRES_CUSTOM_USERS`: List of comma or semicolon separeted list of postgres usernames. This will create entries in `pgpool_passwd`. No defaults.
@@ -611,7 +614,7 @@ If you encountered a problem running this container, you can file an [issue](htt
 
 ## License
 
-Copyright &copy; 2023 Bitnami
+Copyright &copy; 2023 VMware, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

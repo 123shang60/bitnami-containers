@@ -6,8 +6,6 @@
 
 [Overview of Harbor Registryctl](https://github.com/goharbor/harbor)
 
-
-
 ## TL;DR
 
 ```console
@@ -25,6 +23,8 @@ docker-compose up
 * Bitnami containers, virtual machines and cloud images use the same components and configuration approach - making it easy to switch between formats based on your project needs.
 * All our images are based on minideb a minimalist Debian based container image which gives you a small base container image and the familiarity of a leading Linux distribution.
 * Bitnami container images are released on a regular basis with the latest distribution packages available.
+
+Looking to use Harbor Registryctl in production? Try [VMware Application Catalog](https://bitnami.com/enterprise), the enterprise edition of Bitnami Application Catalog.
 
 ## How to deploy Harbor in Kubernetes?
 
@@ -48,7 +48,7 @@ Subscribe to project updates by watching the [bitnami/containers GitHub repo](ht
 
 Harbor Registryctl is a component of the Harbor application. In order to get the Harbor application running on Kubernetes we encourage you to check the [bitnami/harbor Helm chart](https://github.com/bitnami/charts/tree/master/bitnami/harbor) and configure it using the options exposed in the values.yaml file.
 
-For further information about the specific component itself, please refer to the [source repository documentation](https://github.com/goharbor/harbor/tree/master/docs).
+For further information about the specific component itself, please refer to the [source repository documentation](https://github.com/goharbor/harbor/tree/main/docs).
 
 ## Contributing
 
@@ -60,7 +60,7 @@ If you encountered a problem running this container, you can file an [issue](htt
 
 ## License
 
-Copyright &copy; 2023 Bitnami
+Copyright &copy; 2023 VMware, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

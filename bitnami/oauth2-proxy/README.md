@@ -5,7 +5,6 @@
 > A reverse proxy and static file server that provides authentication using Providers (Google, GitHub, and others) to validate accounts by email, domain or group.
 
 [Overview of OAuth2 Proxy](https://github.com/oauth2-proxy/oauth2-proxy)
-
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 ## TL;DR
@@ -22,6 +21,8 @@ docker run --name oauth2-proxy bitnami/oauth2-proxy:latest
 * All our images are based on [minideb](https://github.com/bitnami/minideb) a minimalist Debian based container image which gives you a small base container image and the familiarity of a leading Linux distribution.
 * All Bitnami images available in Docker Hub are signed with [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/content_trust/). You can use `DOCKER_CONTENT_TRUST=1` to verify the integrity of the images.
 * Bitnami container images are released on a regular basis with the latest distribution packages available.
+
+Looking to use OAuth2 Proxy in production? Try [VMware Application Catalog](https://bitnami.com/enterprise), the enterprise edition of Bitnami Application Catalog.
 
 ## Why use a non-root container?
 
@@ -134,7 +135,7 @@ docker rm -v oauth2-proxy
 
 #### Step 4: Run the new image
 
-Re-create your container from the new image, restoring your backup](#restoring-a-backup if necessary.
+Re-create your container from the new image, restoring your backup if necessary.
 
 ```console
 docker run --name oauth2-proxy bitnami/oauth2-proxy:latest
@@ -142,8 +143,8 @@ docker run --name oauth2-proxy bitnami/oauth2-proxy:latest
 
 ## Contributing
 
-We'd love for you to contribute to this container. You can request new features by creating an [issue](https://github.com/bitnami/containers/blob/main/bitnami/oauth2-proxy/issues) or submitting a [pull
-request](https://github.com/bitnami/containers/blob/main/bitnami/oauth2-proxy/pulls) with your contribution.
+We'd love for you to contribute to this container. You can request new features by creating an [issue](https://github.com/bitnami/containers/issues/new) or submitting a [pull
+request](https://github.com/bitnami/containers/pulls/new) with your contribution.
 
 ## Issues
 
@@ -157,7 +158,7 @@ request](https://github.com/bitnami/containers/blob/main/bitnami/oauth2-proxy/pu
 
 ## License
 
-Copyright &copy; 2023 Bitnami
+Copyright &copy; 2023 VMware, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

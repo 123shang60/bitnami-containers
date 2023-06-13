@@ -1,65 +1,50 @@
 {
     "appsmith": {
         "arch": "amd64",
-        "digest": "8bd2303b310157284ea76fd51f890c8a7fe367fbf651189003985ce5ecf54f5d",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "1.9.8-0"
-    },
-    "gosu": {
-        "arch": "amd64",
-        "digest": "f6056076afb745fd7d9d87d20f71e7248d63330352cf5ae0be2130b7f44a8cfa",
-        "distro": "debian-11",
-        "type": "NAMI",
-        "version": "1.16.0-2"
+        "version": "1.9.21-0"
     },
     "java": {
         "arch": "amd64",
-        "digest": "09eb316f02e065beb59e8c3cc8f2f908879faf7f4902cd1cc4b9fcd25bd528ca",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "17.0.6-10-2"
+        "version": "17.0.7-7-2"
     },
     "mongodb-shell": {
         "arch": "amd64",
-        "digest": "92888a85fef7b16c5990c1313c95f8756aa2216ddd48c417104912c49795d4c2",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "1.7.1-1"
+        "version": "1.9.1-0"
     },
     "nginx": {
         "arch": "amd64",
-        "digest": "d91f7d25430a4c7fa7d2bf1dc4525b925fa54dbcd3aca669be9909624115307e",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "1.23.3-3"
+        "version": "1.25.0-1"
     },
     "node": {
         "arch": "amd64",
-        "digest": "af036d4ce8c216d61f662a522345caac4f4822fec1fdb2383302b5b1b9f2ffc9",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "16.19.1-1"
+        "version": "16.20.0-3"
     },
     "python": {
         "arch": "amd64",
-        "digest": "e6ada4eebb80ec0bf135a4d0edd51b8e975939e2fea74e843b4eadae6a62d54f",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "3.8.16-5"
+        "version": "3.9.17-0"
     },
     "render-template": {
         "arch": "amd64",
-        "digest": "185e277977366ec222d2bde1a395ffa138ce1a9d3bdf1df20c3e49e8b8f9c68b",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "1.0.5-1"
+        "version": "1.0.5-6"
     },
     "wait-for-port": {
         "arch": "amd64",
-        "digest": "be7c393d598ddf16d1c3c008a67b87879e48aca62071a208583390f2b41e6744",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "1.0.6-1"
+        "version": "1.0.6-7"
     }
 }

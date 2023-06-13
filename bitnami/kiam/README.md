@@ -5,7 +5,6 @@
 > kiam is a proxy that captures AWS Metadata API requests. It allows AWS IAM roles to be set for Kubernetes workloads.
 
 [Overview of Kiam](https://github.com/uswitch/kiam)
-
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 ⚠️ Please note that according to [this note](https://github.com/uswitch/kiam#-%EF%B8%8Fthis-project-is-in-maintenance-mode-%EF%B8%8F-) in the upstream project, Kiam maintainers are only accepting patches/bug fixes but no new features.
@@ -25,6 +24,8 @@ docker run --name Kiam bitnami/kiam:latest
 * All our images are based on [minideb](https://github.com/bitnami/minideb) a minimalist Debian based container image which gives you a small base container image and the familiarity of a leading Linux distribution.
 * All Bitnami images available in Docker Hub are signed with [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/content_trust/). You can use `DOCKER_CONTENT_TRUST=1` to verify the integrity of the images.
 * Bitnami container images are released on a regular basis with the latest distribution packages available.
+
+Looking to use Kiam in production? Try [VMware Application Catalog](https://bitnami.com/enterprise), the enterprise edition of Bitnami Application Catalog.
 
 ## Supported tags and respective `Dockerfile` links
 
@@ -63,7 +64,7 @@ docker build -t bitnami/APP:latest .
 To run commands inside this container you can use `docker run`, for example to execute `kiam --version` you can follow the example below:
 
 ```console
-docker run --rm --name Kiam bitnami/kiam:latest -- --version
+docker run --rm --name kiam bitnami/kiam:latest -- --version
 ```
 
 Check the [official Kiam documentation](https://github.com/uswitch/kiam/tree/master/docs) for a list of the available parameters.
@@ -78,7 +79,7 @@ If you encountered a problem running this container, you can file an [issue](htt
 
 ## License
 
-Copyright &copy; 2023 Bitnami
+Copyright &copy; 2023 VMware, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

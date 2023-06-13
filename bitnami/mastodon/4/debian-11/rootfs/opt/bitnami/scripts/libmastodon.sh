@@ -155,7 +155,7 @@ mastodon_bundle_execute_print_output() {
     # Avoid creating unnecessary cache files at initialization time
     local -a cmd=("bundle" "exec" "$@")
     # Run as application user to avoid having to change permissions/ownership afterwards
-    am_i_root && cmd=("gosu" "$MASTODON_DAEMON_USER" "${cmd[@]}")
+    am_i_root && cmd=("run_as_user" "$MASTODON_DAEMON_USER" "${cmd[@]}")
     (
         cd "$MASTODON_BASE_DIR" || false
         "${cmd[@]}"
@@ -240,7 +240,7 @@ mastodon_ensure_admin_user_exists() {
     local res=""
     if am_i_root; then
         # Adding true to avoid the logic to exit
-        res="$(gosu "$MASTODON_DAEMON_USER" "${cmd[@]}" "${args[@]}" || true)"
+        res="$(run_as_user "$MASTODON_DAEMON_USER" "${cmd[@]}" "${args[@]}" || true)"
     else
         # Adding true to avoid the logic to exit
         res="$("${cmd[@]}" "${args[@]}" || true)"
@@ -284,7 +284,7 @@ mastodon_wait_for_postgresql_connection() {
         echo "$res" | grep -q '1 row'
     }
     if ! retry_while "debug_execute check_postgresql_connection" "$MASTODON_STARTUP_ATTEMPTS"; then
-        error "Could not connect to the database"
+        error "Could not connect to the PostgreSQL database"
         return 1
     fi
     info "PostgreSQL instance is ready"
@@ -311,7 +311,7 @@ mastodon_wait_for_elasticsearch_connection() {
         echo "$res" | grep -q 'You Know'
     }
     if ! retry_while "debug_execute check_elasticsearch_connection" "$MASTODON_STARTUP_ATTEMPTS"; then
-        error "Could not connect to the database"
+        error "Could not connect to Elasticsearch"
         return 1
     fi
     info "Elasticsearch instance is ready"

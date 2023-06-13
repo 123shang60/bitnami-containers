@@ -5,7 +5,6 @@
 > PgBouncer is a connection pooler for PostgreSQL. It reduces performance overhead by rotating client connections to PostgreSQL databases. It supports PostgreSQL databases located on different hosts.
 
 [Overview of PgBouncer](https://www.pgbouncer.org/)
-
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 ## TL;DR
@@ -31,6 +30,8 @@ docker-compose up -d
 * All our images are based on [minideb](https://github.com/bitnami/minideb) a minimalist Debian based container image which gives you a small base container image and the familiarity of a leading Linux distribution.
 * All Bitnami images available in Docker Hub are signed with [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/content_trust/). You can use `DOCKER_CONTENT_TRUST=1` to verify the integrity of the images.
 * Bitnami container images are released on a regular basis with the latest distribution packages available.
+
+Looking to use PgBouncer in production? Try [VMware Application Catalog](https://bitnami.com/enterprise), the enterprise edition of Bitnami Application Catalog.
 
 ## Why use a non-root container?
 
@@ -82,7 +83,7 @@ The Bitnami PgBouncer container requires a running PostgreSQL installation to co
 
 * `POSTGRESQL_USERNAME`: Backend PostgreSQL username. Default: **postgres**.
 * `POSTGRESQL_PASSWORD`: Backend PostgreSQL password. No defaults.
-* `POSTGRESQL_DATABASE`: Backend PostgreSQL Database name to connect to. Default: **postgres**.
+* `POSTGRESQL_DATABASE`: Backend PostgreSQL Database name to connect to. Default: **${PGBOUNCER_DATABASE}**.
 * `POSTGRESQL_HOST`: Backend PostgreSQL hostname. Default: **postgresql**.
 * `POSTGRESQL_PORT`: Backend PostgreSQL port. Default: **5432**.
 * `PGBOUNCER_SET_DATABASE_USER`: Whether to include the backend PostgreSQL username in the database string. Default **no**.
@@ -117,6 +118,9 @@ To expose the same database name as the backend, set `PGBOUNCER_DATABASE="$POSTG
 
 * `PGBOUNCER_AUTH_USER`: PgBouncer will use this user to connect to the database and query the PostgreSQL backend for a user and password. No defaults.
 * `PGBOUNCER_AUTH_QUERY`: PgBouncer will use this query to connect to the database and query the PostgreSQL backend for a user and password. No defaults.
+* `PGBOUNCER_AUTH_TYPE`: PgBouncer authentication type. Default: **md5**
+* `PGBOUNCER_AUTH_HBA_FILE`: HBA configuration file to use if auth_type is set to hba. No defaults.
+* `PGBOUNCER_USERLIST`: Specify content of the *userlist.txt* file
 * `PGBOUNCER_POOL_MODE` : PgBouncer pool mode. Allowed values: session, transaction and statement. Default: **session**.
 * `PGBOUNCER_INIT_SLEEP_TIME` : PgBouncer initialization sleep time. Default: **10**.
 * `PGBOUNCER_INIT_MAX_RETRIES` : PgBouncer initialization maximum retries. Default: **10**.
@@ -127,7 +131,7 @@ To expose the same database name as the backend, set `PGBOUNCER_DATABASE="$POSTG
 * `PGBOUNCER_DEFAULT_POOL_SIZE` : PgBouncer maximum server connections to allow per user/database pair. Default: **20**.
 * `PGBOUNCER_MIN_POOL_SIZE` : PgBouncer has at least this amount of open connections. Default: **0 (disabled)**.
 * `PGBOUNCER_RESERVE_POOL_SIZE` : PgBouncer allows this amount of additional connections. Default: **0 (disabled)**.
-* `PGBOUNCER_IGNORE_STARTUP_PARAMETERS`: you can use this to set `ignore_startup_parameters` in the auto-generated `pgbouncer.ini`. This can be useful for solving certain connection issues. See https://www.pgbouncer.org/config.html for more details.
+* `PGBOUNCER_IGNORE_STARTUP_PARAMETERS`: you can use this to set `ignore_startup_parameters` in the auto-generated `pgbouncer.ini`. This can be useful for solving certain connection issues. See <https://www.pgbouncer.org/> config.html for more details.
 * `PGBOUNCER_SERVER_IDLE_TIMEOUT`: PgBouncer maximum time in seconds a server connection can be idle. If 0 then the timeout is disabled. Default: **600**
 * `PGBOUNCER_SERVER_RESET_QUERY`: PgBouncer query sent to server on connection release before making it available to other clients. Default: **DISCARD ALL**
 * `PGBOUNCER_STATS_USERS`: PgBouncer comma-separated list of database users that are allowed to connect and run read-only queries. No defaults.
@@ -280,7 +284,7 @@ If you encountered a problem running this container, you can file an [issue](htt
 
 ## License
 
-Copyright &copy; 2023 Bitnami
+Copyright &copy; 2023 VMware, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

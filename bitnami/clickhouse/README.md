@@ -5,7 +5,6 @@
 > ClickHouse is an open-source column-oriented OLAP database management system. Use it to boost your database performance while providing linear scalability and hardware efficiency.
 
 [Overview of ClickHouse](https://clickhouse.com/)
-
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 ## TL;DR
@@ -29,6 +28,8 @@ docker-compose up -d
 * All our images are based on [minideb](https://github.com/bitnami/minideb) a minimalist Debian based container image which gives you a small base container image and the familiarity of a leading Linux distribution.
 * All Bitnami images available in Docker Hub are signed with [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/content_trust/). You can use `DOCKER_CONTENT_TRUST=1` to verify the integrity of the images.
 * Bitnami container images are released on a regular basis with the latest distribution packages available.
+
+Looking to use ClickHouse in production? Try [VMware Application Catalog](https://bitnami.com/enterprise), the enterprise edition of Bitnami Application Catalog.
 
 ## How to deploy ClickHouse in Kubernetes?
 
@@ -167,11 +168,11 @@ ClickHouse can be configured via environment variables or using a configuration 
 
 ### Configuration overrides
 
-The configuration can easily be setup by mounting your own configuration overrides on the directory `/bitnami/clickhouse/conf/conf.d` or `/bitnami/clickhouse/conf/users.d`:
+The configuration can easily be setup by mounting your own configuration overrides on the directory `/bitnami/clickhouse/etc/conf.d` or `/bitnami/clickhouse/etc/users.d`:
 
 ```console
 docker run --name clickhouse \
-    --volume /path/to/override.xml:/bitnami/clickhouse/conf/conf.d/override.xml:ro \
+    --volume /path/to/override.xml:/bitnami/clickhouse/etc/conf.d/override.xml:ro \
     bitnami/clickhouse:latest
 ```
 
@@ -328,7 +329,7 @@ If you encountered a problem running this container, you can file an [issue](htt
 
 ## License
 
-Copyright &copy; 2023 Bitnami
+Copyright &copy; 2023 VMware, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

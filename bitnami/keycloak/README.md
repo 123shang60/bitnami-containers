@@ -5,7 +5,6 @@
 > Keycloak is a high performance Java-based identity and access management solution. It lets developers add an authentication layer to their applications with minimum effort.
 
 [Overview of Keycloak](https://www.keycloak.org/)
-
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 ## TL;DR
@@ -31,6 +30,8 @@ docker-compose up
 * All our images are based on [minideb](https://github.com/bitnami/minideb) a minimalist Debian based container image which gives you a small base container image and the familiarity of a leading Linux distribution.
 * All Bitnami images available in Docker Hub are signed with [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/content_trust/). You can use `DOCKER_CONTENT_TRUST=1` to verify the integrity of the images.
 * Bitnami container images are released on a regular basis with the latest distribution packages available.
+
+Looking to use Keycloak in production? Try [VMware Application Catalog](https://bitnami.com/enterprise), the enterprise edition of Bitnami Application Catalog.
 
 ## How to deploy Keycloak in Kubernetes?
 
@@ -82,7 +83,13 @@ The Bitnami Keycloak container can create a default admin user by setting the fo
 * `KEYCLOAK_MANAGEMENT_USER`: WildFly default management user. Default: **manager**.
 * `KEYCLOAK_MANAGEMENT_PASSWORD`: WildFly default management password. Default: **bitnami1**.
 
-### Connecting to a PostgreSQL database
+### Connecting to a database
+
+The Bitnami Keycloak container can connect to a database by setting the following environment variables:
+
+* `KEYCLOAK_DATABASE_VENDOR`: Database vendor. Default: **postgresql**. Use **dev-mem** or **dev-file** to use an in-memory or file-based database for development purposes.
+
+### PostgreSQL database connection configuration
 
 The Bitnami Keycloak container requires a PostgreSQL database to work. This is configured with the following environment variables:
 
@@ -148,7 +155,7 @@ The Bitnami Keycloak Docker image allows configuring HTTPS/TLS encription. This 
 * `keystore`: File with the server keystore
 * `truststore`: File with the server truststore
 
-> Note: find more information about how to create these files at the [Keycloak documentation](https://www.keycloak.org/docs/latest/server_installation/#_truststore).
+> Note: find more information about how to create these files at the [Keycloak documentation](https://www.keycloak.org/server/keycloak-truststore).
 
 Apart from that, the following environment variables must be set:
 
@@ -252,7 +259,7 @@ If you encountered a problem running this container, you can file an [issue](htt
 
 ## License
 
-Copyright &copy; 2023 Bitnami
+Copyright &copy; 2023 VMware, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

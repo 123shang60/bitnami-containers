@@ -5,7 +5,6 @@
 > Apache Solr is an extremely powerful, open source enterprise search platform built on Apache Lucene. It is highly reliable and flexible, scalable, and designed to add value very quickly after launch.
 
 [Overview of Apache Solr](http://lucene.apache.org/solr/)
-
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 ## TL;DR
@@ -31,6 +30,8 @@ You can find the available configuration options in the [Environment Variables](
 * All our images are based on [minideb](https://github.com/bitnami/minideb) a minimalist Debian based container image which gives you a small base container image and the familiarity of a leading Linux distribution.
 * All Bitnami images available in Docker Hub are signed with [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/content_trust/). You can use `DOCKER_CONTENT_TRUST=1` to verify the integrity of the images.
 * Bitnami container images are released on a regular basis with the latest distribution packages available.
+
+Looking to use Apache Solr in production? Try [VMware Application Catalog](https://bitnami.com/enterprise), the enterprise edition of Bitnami Application Catalog.
 
 ## Supported tags and respective `Dockerfile` links
 
@@ -156,6 +157,7 @@ When you start the solr image, you can adjust the configuration of the instance 
 * `SOLR_CORE_CONF_DIR`: Configuration directory to copy when creating a new core. Default: **data_driven_schema_configs**
 * `SOLR_OPTS`: List of Solr server options and flags separated by either a space, (``), a comma (`,`) or a semicolon (`;`). No default. (E.g.: '**-XX:+AggressiveOpts -XX:G1HeapRegionSize=8m**')
 * `SOLR_JETTY_HOST`: Configuration to listen on a specific IP address or host name.Default: **0.0.0.0**
+* `SOLR_SECURITY_MANAGER_ENABLED`: Java security manager disabled. Default: **false**
 
 Cluster related environment variables:
 
@@ -167,11 +169,12 @@ Cluster related environment variables:
 * `SOLR_NUMBER_OF_NODES`: Number of the node of the Solr cloud cluster. Default: **1**
 * `SOLR_HOST`: Name of the node. If not set the node IP will be used. Default: **null**
 * `SORL_ZK_SLEEP_TIME`: Sleep time when waiting for init configuration operations to finish. Default: **5**
-* `SOLR_ZK_MAX_RETRIES`: Maximum retries when waitinf for init configuration operations to finish. Default: **5**
+* `SOLR_ZK_MAX_RETRIES`: Maximum retries when waiting for init configuration operations to finish. Default: **5**
+* `SOLR_ZK_CHROOT`: ZooKeeper ZNode chroot where to store solr data. Default: **/solr**
 
 Authentication related environment variables:
 
-* `SOLR_ENABLE_AUTHENTICATION`: Enable the authentication, you can indicate the administrator credentiales with the following variables. Default: **no**
+* `SOLR_ENABLE_AUTHENTICATION`: Enable the authentication, you can indicate the administrator credentials with the following variables. Default: **no**
 * `SOLR_ADMIN_USERNAME`: Username for the administrator user. Default: **admin**
 * `SOLR_ADMIN_PASSWORD`: Password for the administrator user. Default: **Bitnami**
 
@@ -287,7 +290,7 @@ docker-compose rm -v solr
 
 #### Step 4: Run the new image
 
-Re-create your container from the new image, restoring your backup](#restoring-a-backup if necessary.
+Re-create your container from the new image, restoring your backup if necessary.
 
 ```console
 docker run --name solr bitnami/solr:latest
@@ -327,7 +330,7 @@ If you encountered a problem running this container, you can file an [issue](htt
 
 ## License
 
-Copyright &copy; 2023 Bitnami
+Copyright &copy; 2023 VMware, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

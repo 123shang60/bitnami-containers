@@ -5,7 +5,6 @@
 > NGINX Ingress Controller is an Ingress controller that manages external access to HTTP services in a Kubernetes cluster using NGINX.
 
 [Overview of NGINX Ingress Controller](https://kubernetes.github.io/ingress-nginx/)
-
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 ## TL;DR
@@ -24,6 +23,8 @@ docker run --name nginx-ingress-controller bitnami/nginx-ingress-controller:late
 * All our images are based on [minideb](https://github.com/bitnami/minideb) a minimalist Debian based container image which gives you a small base container image and the familiarity of a leading Linux distribution.
 * All Bitnami images available in Docker Hub are signed with [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/content_trust/). You can use `DOCKER_CONTENT_TRUST=1` to verify the integrity of the images.
 * Bitnami container images are released on a regular basis with the latest distribution packages available.
+
+Looking to use NGINX Ingress Controller in production? Try [VMware Application Catalog](https://bitnami.com/enterprise), the enterprise edition of Bitnami Application Catalog.
 
 ## How to deploy NGINX Ingress Controller in Kubernetes?
 
@@ -45,8 +46,8 @@ For further documentation, please check [here](https://github.com/kubernetes/ing
 
 ## Contributing
 
-We'd love for you to contribute to this container. You can request new features by creating an [issue](https://github.com/bitnami/containers/blob/main/bitnami/nginx-ingress-controller/issues) or submitting a [pull
-request](https://github.com/bitnami/containers/blob/main/bitnami/nginx-ingress-controller/pulls) with your contribution.
+We'd love for you to contribute to this container. You can request new features by creating an [issue](https://github.com/bitnami/containers/issues/new) or submitting a [pull
+request](https://github.com/bitnami/containers/pulls/new) with your contribution.
 
 ## Issues
 
@@ -60,7 +61,7 @@ If you encountered a problem running this container, you can file an [issue](htt
 
 ## License
 
-Copyright &copy; 2023 Bitnami
+Copyright &copy; 2023 VMware, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

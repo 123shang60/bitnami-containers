@@ -1,37 +1,26 @@
 {
     "express": {
         "arch": "amd64",
-        "digest": "c9d294177420a5958352dd9affe52bbdcc418631dcbb1cd132e6dc07e299446f",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "4.18.2-4"
-    },
-    "gosu": {
-        "arch": "amd64",
-        "digest": "f6056076afb745fd7d9d87d20f71e7248d63330352cf5ae0be2130b7f44a8cfa",
-        "distro": "debian-11",
-        "type": "NAMI",
-        "version": "1.16.0-2"
+        "version": "4.18.2-11"
     },
     "node": {
         "arch": "amd64",
-        "digest": "d6828cad4303399275281eb1c617d87c315c65d0def58d1204fac426e0200b0a",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "18.14.1-1"
+        "version": "18.16.0-2"
     },
     "python": {
         "arch": "amd64",
-        "digest": "e6ada4eebb80ec0bf135a4d0edd51b8e975939e2fea74e843b4eadae6a62d54f",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "3.8.16-5"
+        "version": "3.9.17-0"
     },
     "wait-for-port": {
         "arch": "amd64",
-        "digest": "be7c393d598ddf16d1c3c008a67b87879e48aca62071a208583390f2b41e6744",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "1.0.6-1"
+        "version": "1.0.6-7"
     }
 }

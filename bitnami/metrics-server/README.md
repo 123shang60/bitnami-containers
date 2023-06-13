@@ -5,7 +5,6 @@
 > Metrics Server aggregates resource usage data, such as container CPU and memory usage, in a Kubernetes cluster and makes it available via the Metrics API.
 
 [Overview of Metrics Server](https://github.com/kubernetes-incubator/metrics-server)
-
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 ## TL;DR
@@ -24,6 +23,8 @@ docker run --name metrics-server bitnami/metrics-server:latest
 * All our images are based on [minideb](https://github.com/bitnami/minideb) a minimalist Debian based container image which gives you a small base container image and the familiarity of a leading Linux distribution.
 * All Bitnami images available in Docker Hub are signed with [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/content_trust/). You can use `DOCKER_CONTENT_TRUST=1` to verify the integrity of the images.
 * Bitnami container images are released on a regular basis with the latest distribution packages available.
+
+Looking to use Metrics Server in production? Try [VMware Application Catalog](https://bitnami.com/enterprise), the enterprise edition of Bitnami Application Catalog.
 
 ## How to deploy Metrics Server in Kubernetes?
 
@@ -51,8 +52,8 @@ For further documentation, please check [here](https://github.com/kubernetes-inc
 
 ## Contributing
 
-We'd love for you to contribute to this container. You can request new features by creating an [issue](https://github.com/bitnami/containers/blob/main/bitnami/metrics-server/issues) or submitting a [pull
-request](https://github.com/bitnami/containers/blob/main/bitnami/metrics-server/pulls) with your contribution.
+We'd love for you to contribute to this container. You can request new features by creating an [issue](https://github.com/bitnami/containers/issues/new) or submitting a [pull
+request](https://github.com/bitnami/containers/pulls/new) with your contribution.
 
 ## Issues
 
@@ -66,7 +67,7 @@ request](https://github.com/bitnami/containers/blob/main/bitnami/metrics-server/
 
 ## License
 
-Copyright &copy; 2023 Bitnami
+Copyright &copy; 2023 VMware, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

@@ -5,7 +5,6 @@
 > OpenResty is a platform for scalable Web applications and services. It is based on enhanced versions of NGINX and LuaJIT.
 
 [Overview of OpenResty](https://openresty.org/)
-
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 ## TL;DR
@@ -27,6 +26,8 @@ docker-compose up -d
 * All our images are based on [minideb](https://github.com/bitnami/minideb) a minimalist Debian based container image which gives you a small base container image and the familiarity of a leading Linux distribution.
 * All Bitnami images available in Docker Hub are signed with [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/content_trust/). You can use `DOCKER_CONTENT_TRUST=1` to verify the integrity of the images.
 * Bitnami container images are released on a regular basis with the latest distribution packages available.
+
+Looking to use OpenResty in production? Try [VMware Application Catalog](https://bitnami.com/enterprise), the enterprise edition of Bitnami Application Catalog.
 
 ## Why use a non-root container?
 
@@ -107,6 +108,12 @@ docker run -p 9000:8080 bitnami/openresty:latest
 Access your web server in the browser by navigating to `http://localhost:9000`.
 
 ## Configuration
+
+### Initializing a new instance
+
+When the container is executed for the first time, it will execute the files with extensions `.sh` located at `/docker-entrypoint-initdb.d`.
+
+In order to have your custom files inside the docker image you can mount them as a volume.
 
 ### Adding custom server blocks
 
@@ -235,6 +242,8 @@ FROM bitnami/openresty:latest
 RUN opm get openresty/lua-resty-lock
 ```
 
+Additionally, you can install your custom Lua modules using [your custom init scripts](#initializing-a-new-instance).
+
 ## Reverse proxy to other containers
 
 OpenResty can be used to reverse proxy to other containers using Docker's linking system. This is particularly useful if you want to serve dynamic content through an OpenResty frontend. To do so, [add a server block](#adding-custom-server-blocks) like the following in the `/opt/bitnami/openresty/nginx/conf/server_blocks/` folder:
@@ -286,6 +295,7 @@ The Bitnami OpenResty Docker image is designed to be extended so it can be used 
 Before extending this image, please note there are certain configuration settings you can modify using the original image:
 
 * Settings that can be adapted using environment variables. For instance, you can change the port used by OpenResty for HTTP setting the environment variable `OPENRESTY_HTTP_PORT_NUMBER`.
+* [Initializing a new instance](#initializing-a-new-instance)
 * [Adding custom server blocks](#adding-custom-server-blocks).
 * [Replacing the 'nginx.conf' file](#full-configuration).
 * [Using custom SSL certificates](#using-custom-ssl-certificates).
@@ -425,7 +435,7 @@ If you encountered a problem running this container, you can file an [issue](htt
 
 ## License
 
-Copyright &copy; 2023 Bitnami
+Copyright &copy; 2023 VMware, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

@@ -1,23 +1,20 @@
 {
     "node": {
         "arch": "amd64",
-        "digest": "d6828cad4303399275281eb1c617d87c315c65d0def58d1204fac426e0200b0a",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "18.14.1-1"
+        "version": "18.16.0-2"
     },
     "python": {
         "arch": "amd64",
-        "digest": "e6ada4eebb80ec0bf135a4d0edd51b8e975939e2fea74e843b4eadae6a62d54f",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "3.8.16-5"
+        "version": "3.9.17-0"
     },
     "supabase-storage": {
         "arch": "amd64",
-        "digest": "cde7a61d936c5baec26770b73a86a1143116e7a1f8080cfc21c045b50cbc1bef",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "0.29.1-0"
+        "version": "0.40.1-0"
     }
 }

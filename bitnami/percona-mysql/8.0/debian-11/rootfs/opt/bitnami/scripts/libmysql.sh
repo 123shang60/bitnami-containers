@@ -200,6 +200,7 @@ CHANGE MASTER TO MASTER_HOST='$DB_MASTER_HOST',
 MASTER_PORT=$DB_MASTER_PORT_NUMBER,
 MASTER_USER='$DB_REPLICATION_USER',
 MASTER_PASSWORD='$DB_REPLICATION_PASSWORD',
+MASTER_DELAY=$DB_MASTER_DELAY,
 MASTER_CONNECT_RETRY=10;
 EOF
     elif [[ "$DB_REPLICATION_MODE" = "master" ]]; then
@@ -516,7 +517,8 @@ mysql_execute_print_output() {
     if [[ -f "$DB_CONF_FILE" ]]; then
         args+=("--defaults-file=${DB_CONF_FILE}")
     fi
-    args+=("-N" "-u" "$user" "$db")
+    args+=("-N" "-u" "$user")
+    [[ -n "$db" ]] && args+=("$db")
     [[ -n "$pass" ]] && args+=("-p$pass")
     [[ "${#opts[@]}" -gt 0 ]] && args+=("${opts[@]}")
     [[ "${#extra_opts[@]}" -gt 0 ]] && args+=("${extra_opts[@]}")
@@ -723,6 +725,11 @@ mysql_stop() {
 mysql_install_db() {
     local command="${DB_BIN_DIR}/mysql_install_db"
     local -a args=("--defaults-file=${DB_CONF_FILE}" "--basedir=${DB_BASE_DIR}" "--datadir=${DB_DATA_DIR}")
+
+    # Add flags specified via the 'DB_EXTRA_FLAGS' environment variable
+    read -r -a db_extra_flags <<< "$(mysql_extra_flags)"
+    [[ "${#db_extra_flags[@]}" -gt 0 ]] && args+=("${db_extra_flags[@]}")
+
     am_i_root && args=("${args[@]}" "--user=$DB_DAEMON_USER")
     if [[ "$DB_FLAVOR" = "mariadb" ]]; then
         args+=("--auth-root-authentication-method=normal")
@@ -765,7 +772,7 @@ mysql_upgrade() {
     else
         mysql_start_bg
         is_boolean_yes "${ROOT_AUTH_ENABLED:-false}" && args+=("-p$(get_master_env_var_value ROOT_PASSWORD)")
-        debug_execute "${DB_BIN_DIR}/mysql_upgrade" "${args[@]}" --force
+        debug_execute "${DB_BIN_DIR}/mysql_upgrade" "${args[@]}" || echo "This installation is already upgraded"
     fi
 }
 
@@ -857,9 +864,9 @@ mysql_ensure_user_exists() {
         auth_string="identified via pam using '$DB_FLAVOR'"
     elif [[ -n "$password" ]]; then
         if [[ -n "$auth_plugin" ]]; then
-            auth_string="identified with $auth_plugin by \"$password\""
+            auth_string="identified with $auth_plugin by '$password'"
         else
-            auth_string="identified by \"$password\""
+            auth_string="identified by '$password'"
         fi
     fi
     debug "creating database user \'$user\'"

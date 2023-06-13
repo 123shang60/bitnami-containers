@@ -129,6 +129,9 @@ kibana_initialize() {
             kibana_conf_set "elasticsearch.username" "kibana_system"
             kibana_conf_set "elasticsearch.password" "$KIBANA_PASSWORD"
         fi
+        if is_boolean_yes "$KIBANA_DISABLE_STRICT_CSP"; then
+            kibana_conf_set "csp.strict" "false" "bool"
+        fi
         if is_boolean_yes "$KIBANA_SERVER_ENABLE_TLS"; then
             kibana_conf_set "server.ssl.enabled" "true" "bool"
             if "$KIBANA_SERVER_TLS_USE_PEM"; then
@@ -358,7 +361,7 @@ kibana_start_bg() {
 
     info "Starting Kibana in background"
     local start_command=("${KIBANA_BIN_DIR}/kibana" "serve" "${extra_args[@]}")
-    am_i_root && start_command=("gosu" "$KIBANA_DAEMON_USER" "${start_command[@]}")
+    am_i_root && start_command=("run_as_user" "$KIBANA_DAEMON_USER" "${start_command[@]}")
     debug_execute "${start_command[@]}" &
 }
 

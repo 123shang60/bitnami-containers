@@ -1,16 +1,8 @@
 {
-    "gosu": {
-        "arch": "amd64",
-        "digest": "f6056076afb745fd7d9d87d20f71e7248d63330352cf5ae0be2130b7f44a8cfa",
-        "distro": "debian-11",
-        "type": "NAMI",
-        "version": "1.16.0-2"
-    },
     "harbor-adapter-trivy": {
         "arch": "amd64",
-        "digest": "6a4d63d225ea7cf6d42b90a5963043efffc49a6b2ac50191afd06145e804d800",
         "distro": "debian-11",
         "type": "NAMI",
-        "version": "2.7.0-2"
+        "version": "2.8.1-3"
     }
 }

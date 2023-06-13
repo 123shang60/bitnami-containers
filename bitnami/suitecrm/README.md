@@ -5,7 +5,6 @@
 > SuiteCRM is a completely open source, enterprise-grade Customer Relationship Management (CRM) application. SuiteCRM is a fork of the popular SugarCRM application.
 
 [Overview of SuiteCRM](http://www.suitecrm.com/)
-
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 ## TL;DR
@@ -25,6 +24,8 @@ docker-compose up -d
 * All our images are based on [minideb](https://github.com/bitnami/minideb) a minimalist Debian based container image which gives you a small base container image and the familiarity of a leading Linux distribution.
 * All Bitnami images available in Docker Hub are signed with [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/content_trust/). You can use `DOCKER_CONTENT_TRUST=1` to verify the integrity of the images.
 * Bitnami container images are released on a regular basis with the latest distribution packages available.
+
+Looking to use SuiteCRM in production? Try [VMware Application Catalog](https://bitnami.com/enterprise), the enterprise edition of Bitnami Application Catalog.
 
 ## How to deploy SuiteCRM in Kubernetes?
 
@@ -88,7 +89,7 @@ docker network create suitecrm-network
 #### Step 2: Create a volume for MariaDB persistence and create a MariaDB container
 
 ```console
-docker volume create --name mariadb_data
+$ docker volume create --name mariadb_data
 docker run -d --name mariadb \
   --env ALLOW_EMPTY_PASSWORD=yes \
   --env MARIADB_USER=bn_suitecrm \
@@ -102,7 +103,7 @@ docker run -d --name mariadb \
 #### Step 3: Create volumes for SuiteCRM persistence and launch the container
 
 ```console
-docker volume create --name suitecrm_data
+$ docker volume create --name suitecrm_data
 docker run -d --name suitecrm \
   -p 8080:8080 -p 8443:8443 \
   --env ALLOW_EMPTY_PASSWORD=yes \
@@ -192,7 +193,7 @@ docker run -d --name suitecrm \
 
 ## Configuration
 
-## Environment variables
+### Environment variables
 
 When you start the SuiteCRM image, you can adjust the configuration of the instance by passing one or more environment variables either on the docker-compose file or on the `docker run` command line. If you want to add a new environment variable:
 
@@ -218,7 +219,7 @@ suitecrm:
 
 Available environment variables:
 
-### User and Site configuration
+#### User and Site configuration
 
 * `APACHE_HTTP_PORT_NUMBER`: Port used by Apache for HTTP. Default: **8080**
 * `APACHE_HTTPS_PORT_NUMBER`: Port used by Apache for HTTPS. Default: **8443**
@@ -231,7 +232,7 @@ Available environment variables:
 * `SUITECRM_EXTERNAL_HTTP_PORT_NUMBER`: Port to used by SuiteCRM to generate URLs and links when accessing using HTTP. Default **80**.
 * `SUITECRM_EXTERNAL_HTTPS_PORT_NUMBER`: Port to used by SuiteCRM to generate URLs and links when accessing using HTTPS. Default **443**.
 
-### Use an existing database
+#### Use an existing database
 
 * `SUITECRM_DATABASE_HOST`: Hostname for MariaDB server. Default: **mariadb**
 * `SUITECRM_DATABASE_PORT_NUMBER`: Port used by MariaDB server. Default: **3306**
@@ -240,7 +241,7 @@ Available environment variables:
 * `SUITECRM_DATABASE_PASSWORD`: Database password that SuiteCRM will use to connect with the database. No defaults.
 * `ALLOW_EMPTY_PASSWORD`: It can be used to allow blank passwords. Default: **no**
 
-### Create a database for SuiteCRM using mysql-client
+#### Create a database for SuiteCRM using mysql-client
 
 * `MYSQL_CLIENT_FLAVOR`: SQL database flavor. Valid values: `mariadb` or `mysql`. Default: **mariadb**.
 * `MYSQL_CLIENT_DATABASE_HOST`: Hostname for MariaDB server. Default: **mariadb**
@@ -260,7 +261,7 @@ Available environment variables:
 * `MYSQL_CLIENT_SSL_KEY_FILE`: Path to the SSL CA file for the new database. No defaults
 * `ALLOW_EMPTY_PASSWORD`: It can be used to allow blank passwords. Default: **no**
 
-### SMTP Configuration
+#### SMTP Configuration
 
 To configure SuiteCRM to send email using SMTP you can set the following environment variables:
 
@@ -272,7 +273,7 @@ To configure SuiteCRM to send email using SMTP you can set the following environ
 * `SUITECRM_SMTP_NOTIFY_NAME`: Name to use in the SMTP notifications
 * `SUITECRM_SMTP_NOTIFY_ADDRESS`: Notify address for SMTP notifications
 
-### PHP configuration
+#### PHP configuration
 
 * `PHP_ENABLE_OPCACHE`: Enable OPcache for PHP scripts. No default.
 * `PHP_EXPOSE_PHP`: Enables HTTP header with PHP version. No default.
@@ -282,6 +283,7 @@ To configure SuiteCRM to send email using SMTP you can set the following environ
 * `PHP_MEMORY_LIMIT`: Memory limit for PHP scripts. Default: **256M**
 * `PHP_POST_MAX_SIZE`: Maximum size for PHP POST requests. **60M**.
 * `PHP_UPLOAD_MAX_FILESIZE`: Maximum file size for PHP uploads. **60M**.
+* `PHP_OUTPUT_BUFFERING`: Size of the output buffer for PHP. Default: **8196**
 
 #### Example
 
@@ -370,7 +372,7 @@ Restoring a backup is as simple as mounting the backup as volumes in the contain
 For the MariaDB database container:
 
 ```diff
- docker run -d --name mariadb \
+ $ docker run -d --name mariadb \
    ...
 -  --volume /path/to/mariadb-persistence:/bitnami/mariadb \
 +  --volume /path/to/mariadb-backups/latest:/bitnami/mariadb \
@@ -380,7 +382,7 @@ For the MariaDB database container:
 For the SuiteCRM container:
 
 ```diff
- docker run -d --name suitecrm \
+ $ docker run -d --name suitecrm \
    ...
 -  --volume /path/to/suitecrm-persistence:/bitnami/suitecrm \
 +  --volume /path/to/suitecrm-backups/latest:/bitnami/suitecrm \
@@ -550,7 +552,7 @@ New versions and releases cadence are not going to be affected. Once a new versi
 
 ## License
 
-Copyright &copy; 2023 Bitnami
+Copyright &copy; 2023 VMware, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

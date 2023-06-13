@@ -284,6 +284,7 @@ magento_initialize() {
         # Setup would be hard as it would require to configure Sendmail (SMTP not supported) and authorization keys
         # 'You need to configure Two-Factor Authorization in order to proceed to your store's admin area'
         # 'An E-mail was sent to you with further instructions'
+        magento_execute module:disable "Magento_AdminAdobeImsTwoFactorAuth"
         magento_execute module:disable "Magento_TwoFactorAuth"
 
         # Set the Magento mode in 'env.php'
@@ -395,7 +396,7 @@ magento_execute() {
     local -a cmd=("php" "${MAGENTO_BIN_DIR}/magento" "$@")
     # Run as web server user to avoid having to change permissions/ownership afterwards
     if am_i_root; then
-        debug_execute gosu "$WEB_SERVER_DAEMON_USER" "${cmd[@]}"
+        debug_execute run_as_user "$WEB_SERVER_DAEMON_USER" "${cmd[@]}"
     else
         debug_execute "${cmd[@]}"
     fi

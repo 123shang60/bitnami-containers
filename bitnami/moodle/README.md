@@ -5,7 +5,6 @@
 > Moodle&trade; LMS is an open source online Learning Management System widely used at universities, schools, and corporations. It is modular and highly adaptable to any type of online learning.
 
 [Overview of Bitnami LMS powered by Moodle&trade; LMS](http://moodle.org/)
-
 Disclaimer: The respective trademarks mentioned in the offering are owned by the respective companies. We do not provide commercial license of any of these products. This listing has an open source license. Moodle(TM) LMS is run and maintained by Moodle HQ, that is a completely and separate project from Bitnami.
 
 ## TL;DR
@@ -25,6 +24,8 @@ docker-compose up -d
 * All our images are based on [minideb](https://github.com/bitnami/minideb) a minimalist Debian based container image which gives you a small base container image and the familiarity of a leading Linux distribution.
 * All Bitnami images available in Docker Hub are signed with [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/content_trust/). You can use `DOCKER_CONTENT_TRUST=1` to verify the integrity of the images.
 * Bitnami container images are released on a regular basis with the latest distribution packages available.
+
+Looking to use Bitnami LMS powered by Moodle&trade; LMS in production? Try [VMware Application Catalog](https://bitnami.com/enterprise), the enterprise edition of Bitnami Application Catalog.
 
 ## How to deploy Moodle&trade; in Kubernetes?
 
@@ -288,6 +289,7 @@ To configure Moodle&trade; to send email using SMTP you can set the following en
 * `PHP_MEMORY_LIMIT`: Memory limit for PHP scripts. Default: **256M**
 * `PHP_POST_MAX_SIZE`: Maximum size for PHP POST requests. No default.
 * `PHP_UPLOAD_MAX_FILESIZE`: Maximum file size for PHP uploads. No default.
+* `PHP_OUTPUT_BUFFERING`: Size of the output buffer for PHP. Default: **8196**
 
 #### Examples
 
@@ -375,7 +377,7 @@ To use `EXTRA_LOCALES`, you have two options:
   ```yaml
   moodle:
   ...
-    # image: 'bitnami/moodle:4' # remove this line !
+    # image: 'bitnami/moodle:latest' # remove this line !
     build:
       context: .
       dockerfile: Dockerfile
@@ -384,7 +386,7 @@ To use `EXTRA_LOCALES`, you have two options:
   ...
   ```
 
-* For manual execution, clone the repository and run the following command inside the `4/debian-11` directory:
+* For manual execution, clone the repository and run the following command inside the `X/debian-11` directory:
 
   ```console
   docker build -t bitnami/moodle:latest --build-arg EXTRA_LOCALES="fr_FR.UTF-8 UTF-8, de_DE.UTF-8 UTF-8, it_IT.UTF-8 UTF-8, es_ES.UTF-8 UTF-8" .
@@ -401,7 +403,7 @@ To use `WITH_ALL_LOCALES`, you have two options:
   ```yaml
   moodle:
   ...
-    # image: 'bitnami/moodle:4' # remove this line !
+    # image: 'bitnami/moodle:latest' # remove this line !
     build:
       context: .
       dockerfile: Dockerfile
@@ -410,7 +412,7 @@ To use `WITH_ALL_LOCALES`, you have two options:
   ...
   ```
 
-* For manual execution, clone the repository and run the following command inside the `4/debian-11` directory:
+* For manual execution, clone the repository and run the following command inside the `X/debian-11` directory:
 
   ```console
   docker build -t bitnami/moodle:latest --build-arg WITH_ALL_LOCALES=yes .
@@ -607,7 +609,7 @@ Based on the extended image, you can update the [`docker-compose.yml`](https://g
 
 ## 3.7.1-debian-9-r38 and 3.7.1-ol-7-r40
 
-* It is now possible to use existing Moodle&trade; databases from other installations, as requested in [#95](https://github.com/bitnami/bitnami-docker-moodle/issues/95). In order to do this, use the environment variable `MOODLE_SKIP_INSTALL`, which forces the container not to run the initial Moodle&trade; setup wizard.
+* It is now possible to use existing Moodle&trade; databases from other installations. In order to do this, use the environment variable `MOODLE_SKIP_INSTALL`, which forces the container not to run the initial Moodle&trade; setup wizard.
 
 ## 3.7.0-debian-9-r12 and 3.7.0-ol-7-r13
 
@@ -634,7 +636,7 @@ New versions and releases cadence are not going to be affected. Once a new versi
 
 ## License
 
-Copyright &copy; 2023 Bitnami
+Copyright &copy; 2023 VMware, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

@@ -6,8 +6,6 @@
 
 [Overview of Kubeapps Asset Syncer](https://github.com/vmware-tanzu/kubeapps)
 
-
-
 ## TL;DR
 
 ```console
@@ -19,6 +17,8 @@ docker run --name kubeapps-asset-syncer bitnami/kubeapps-asset-syncer:latest
 * Bitnami closely tracks upstream source changes and promptly publishes new versions of this image using our automated systems.
 * With Bitnami images the latest bug fixes and features are available as soon as possible.
 * Bitnami containers, virtual machines and cloud images use the same components and configuration approach - making it easy to switch between formats based on your project needs.
+
+Looking to use Kubeapps Asset Syncer in production? Try [VMware Application Catalog](https://bitnami.com/enterprise), the enterprise edition of Bitnami Application Catalog.
 
 ## How to deploy Kubeapps Asset Syncer in Kubernetes?
 

@@ -5,7 +5,6 @@
 > Discourse is an open source discussion platform with built-in moderation and governance systems that let discussion communities protect themselves from bad actors even without official moderators.
 
 [Overview of Discourse&reg;](http://www.discourse.org/)
-
 Trademarks: This software listing is packaged by Bitnami. The respective trademarks mentioned in the offering are owned by the respective companies, and use of them does not imply any affiliation or endorsement.
 
 ## TL;DR
@@ -25,6 +24,8 @@ docker-compose up -d
 - All our images are based on [minideb](https://github.com/bitnami/minideb) a minimalist Debian based container image which gives you a small base container image and the familiarity of a leading Linux distribution.
 - All Bitnami images available in Docker Hub are signed with [Docker Content Trust (DCT)](https://docs.docker.com/engine/security/trust/content_trust/). You can use `DOCKER_CONTENT_TRUST=1` to verify the integrity of the images.
 - Bitnami container images are released on a regular basis with the latest distribution packages available.
+
+Looking to use Discourse&reg; in production? Try [VMware Application Catalog](https://bitnami.com/enterprise), the enterprise edition of Bitnami Application Catalog.
 
 ## Supported tags and respective `Dockerfile` links
 
@@ -523,7 +524,7 @@ For the Discourse container:
 
 ### Upgrade this image
 
-Bitnami provides up-to-date versions of PostgreSQL and Discourse, including security patches, soon after they are made upstream. We recommend that you follow these steps to upgrade your container. We will cover here the upgrade of the Discourse container. For the PostgreSQL upgrade see: <https://github.com/bitnami/containers/tree/main/bitnami/postgresql/blob/master/README.md#upgrade-this-image>
+Bitnami provides up-to-date versions of PostgreSQL and Discourse, including security patches, soon after they are made upstream. We recommend that you follow these steps to upgrade your container. We will cover here the upgrade of the Discourse container. For the PostgreSQL upgrade see: <https://github.com/bitnami/containers/blob/main/bitnami/postgresql/README.md#user-content-upgrade-this-image>
 
 The `bitnami/discourse:latest` tag always points to the most recent release. To get the most recent release you can simple repull the `latest` tag from the Docker Hub with `docker pull bitnami/discourse:latest`. However it is recommended to use [tagged versions](https://hub.docker.com/r/bitnami/discourse/tags/).
 
@@ -570,15 +571,15 @@ docker-compose up -d
 
 ### 2.4.4-debian-10-r8 release
 
-- Discourse and Sidekiq now make use of the same volume to persist data. This solves issues related to being unable to locate some files generated on-demand by the Sidekiq job scheduler. Related issues: [#142](https://github.com/bitnami/bitnami-docker-discourse/issues/142)
+- Discourse and Sidekiq now make use of the same volume to persist data. This solves issues related to being unable to locate some files generated on-demand by the Sidekiq job scheduler.
 
 ### 2.3.2-debian-9-r48 and 2.3.2-ol-7-r47
 
-- The Discourse container now uses Passenger's ['direct' process spawning method](https://www.phusionpassenger.com/docs/advanced_guides/in_depth/ruby/spawn_methods.html) (instead of the default 'smart'), which fixes a bug where settings would randomly revert back to the original values. This setting may cause an increase in memory usage. It is possible to configure the spawning method by setting the `DISCOURSE_PASSENGER_SPAWN_METHOD` environment variable. Related issues: [#107](https://github.com/bitnami/bitnami-docker-discourse/issues/107), [#109](https://github.com/bitnami/bitnami-docker-discourse/issues/109).
+- The Discourse container now uses Passenger's ['direct' process spawning method](https://www.phusionpassenger.com/docs/advanced_guides/in_depth/ruby/spawn_methods.html) (instead of the default 'smart'), which fixes a bug where settings would randomly revert back to the original values. This setting may cause an increase in memory usage. It is possible to configure the spawning method by setting the `DISCOURSE_PASSENGER_SPAWN_METHOD` environment variable.
 
 ### 2.2.5-debian-9-r9 and 2.2.5-ol-7-r8
 
-- It is now possible to import existing Discourse databases from other installations, as requested in [this ticket](https://github.com/bitnami/bitnami-docker-discourse/issues/82). In order to do this, use the environment variable `DISCOURSE_SKIP_INSTALL`, which forces the container not to run the initial Discourse setup wizard.
+- It is now possible to import existing Discourse databases from other installations. In order to do this, use the environment variable `DISCOURSE_SKIP_INSTALL`, which forces the container not to run the initial Discourse setup wizard.
 
 ## Contributing
 
@@ -598,7 +599,7 @@ New versions and releases cadence are not going to be affected. Once a new versi
 
 ## License
 
-Copyright &copy; 2023 Bitnami
+Copyright &copy; 2023 VMware, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

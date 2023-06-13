@@ -27,6 +27,7 @@ solr_env_vars=(
     SOLR_HOST
     SOLR_JETTY_HOST
     SOLR_HEAP
+    SOLR_SECURITY_MANAGER_ENABLED
     SOLR_JAVA_MEM
     SOLR_PORT_NUMBER
     SOLR_CORES
@@ -42,6 +43,7 @@ solr_env_vars=(
     SOLR_SSL_CHECK_PEER_NAME
     SOLR_ZK_MAX_RETRIES
     SOLR_ZK_SLEEP_TIME
+    SOLR_ZK_CHROOT
     SOLR_COLLECTION
 )
 for env_var in "${solr_env_vars[@]}"; do
@@ -58,6 +60,7 @@ done
 unset solr_env_vars
 
 # Paths
+export PATH="$BITNAMI_ROOT_DIR/solr/bin:$BITNAMI_ROOT_DIR/java/bin:$BITNAMI_ROOT_DIR/common/bin:$PATH"
 export BITNAMI_VOLUME_DIR="/bitnami"
 export SOLR_BASE_DIR="${BITNAMI_ROOT_DIR}/solr"
 export SOLR_JAVA_HOME="${BITNAMI_ROOT_DIR}/java"
@@ -77,6 +80,7 @@ export SOLR_NUMBER_OF_NODES="${SOLR_NUMBER_OF_NODES:-1}"
 export SOLR_HOST="${SOLR_HOST:-}"
 export SOLR_JETTY_HOST="${SOLR_JETTY_HOST:-0.0.0.0}"
 export SOLR_HEAP="${SOLR_HEAP:-}"
+export SOLR_SECURITY_MANAGER_ENABLED="${SOLR_SECURITY_MANAGER_ENABLED:-false}"
 export SOLR_JAVA_MEM="${SOLR_JAVA_MEM:--Xms512m -Xmx512m}"
 export SOLR_PORT_NUMBER="${SOLR_PORT_NUMBER:-8983}"
 export SOLR_PID_FILE="${SOLR_PID_DIR}/solr-${SOLR_PORT_NUMBER}.pid"
@@ -100,5 +104,6 @@ export SOLR_DAEMON_GROUP="solr"
 # Solr retries configuration
 export SOLR_ZK_MAX_RETRIES="${SOLR_ZK_MAX_RETRIES:-5}"
 export SOLR_ZK_SLEEP_TIME="${SOLR_ZK_SLEEP_TIME:-5}"
+export SOLR_ZK_CHROOT="${SOLR_ZK_CHROOT:-/solr}"
 
 # Custom environment variables may be defined below
